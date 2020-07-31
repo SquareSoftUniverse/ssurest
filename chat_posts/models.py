@@ -211,7 +211,6 @@ class Users(models.Model):
     personalquote = models.TextField(db_column='personalQuote')  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'Users'
 
 

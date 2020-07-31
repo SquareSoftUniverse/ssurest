@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'chat_posts',
 ]
 
 MIDDLEWARE = [
@@ -79,6 +80,7 @@ DATABASES = {
         'OPTIONS': {
             'read_default_file': './my.cnf',
             'isolation_level': 'read committed',
+            'sql_mode': 'STRICT_TRANS_TABLES',
         },
     }
 }
