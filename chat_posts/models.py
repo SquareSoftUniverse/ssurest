@@ -166,7 +166,7 @@ class Skins(models.Model):
 
 
 class Users(models.Model):
-    name = models.CharField(primary_key=True, max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     password = models.CharField(max_length=32, blank=True, null=True)
     preferredname = models.CharField(db_column='preferredName', max_length=30, blank=True, null=True)  # Field name made lowercase.
     realname = models.CharField(db_column='realName', max_length=40, blank=True, null=True)  # Field name made lowercase.
