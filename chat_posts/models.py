@@ -75,7 +75,7 @@ class RoomAdmins(models.Model):
 
 
 class Rooms(models.Model):
-    name = models.CharField(primary_key=True, max_length=30)
+    name = models.CharField(max_length=30)
     motd = models.TextField(blank=True, null=True)
     timecreated = models.DateTimeField(db_column='timeCreated')  # Field name made lowercase.
 
