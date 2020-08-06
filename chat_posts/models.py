@@ -18,53 +18,6 @@ class AllowedIn(models.Model):
         unique_together = (('username', 'roomname'),)
 
 
-class Censors(models.Model):
-    matchedtext = models.CharField(db_column='matchedText', primary_key=True, max_length=100)  # Field name made lowercase.
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    replacementtext = models.CharField(db_column='replacementText', max_length=100)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Censors'
-        unique_together = (('matchedtext', 'roomname'),)
-
-
-class ChatControls(models.Model):
-    name = models.CharField(primary_key=True, max_length=30)
-    ccurl = models.TextField(db_column='ccURL', blank=True, null=True)  # Field name made lowercase.
-    height = models.CharField(max_length=5)
-
-    class Meta:
-        managed = False
-        db_table = 'ChatControls'
-
-
-class CurrentPosts(models.Model):
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
-    data = models.TextField(blank=True, null=True)
-    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp', primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'CurrentPosts'
-        unique_together = (('tstamp', 'handlename', 'roomname', 'usertopm'),)
-
-
-class DailyPosts(models.Model):
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
-    data = models.TextField(blank=True, null=True)
-    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp', primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'DailyPosts'
-        unique_together = (('tstamp', 'handlename', 'roomname', 'usertopm'),)
-
-
 class Emoticons(models.Model):
     matchedtext = models.CharField(db_column='matchedText', primary_key=True, max_length=100)  # Field name made lowercase.
     height = models.DecimalField(max_digits=4, decimal_places=0, blank=True, null=True)
@@ -73,7 +26,6 @@ class Emoticons(models.Model):
     imageurl = models.TextField(db_column='imageURL', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'Emoticons'
         unique_together = (('matchedtext', 'roomname'),)
 
@@ -98,21 +50,7 @@ class Handles(models.Model):
     hidden = models.IntegerField()
 
     class Meta:
-        managed = False
         db_table = 'Handles'
-
-
-class OldSSUPosts(models.Model):
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
-    data = models.TextField(blank=True, null=True)
-    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp', primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'OldSSUPosts'
-        unique_together = (('tstamp', 'handlename', 'roomname', 'usertopm'),)
 
 
 class Posts(models.Model):
@@ -123,17 +61,8 @@ class Posts(models.Model):
     tstamp = models.DateTimeField(db_column='tStamp', primary_key=True)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'Posts'
         unique_together = (('tstamp', 'handlename', 'roomname', 'usertopm'),)
-
-
-class Profiles(models.Model):
-    username = models.CharField(db_column='UserName', max_length=12)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Profiles'
 
 
 class RoomAdmins(models.Model):
@@ -141,7 +70,6 @@ class RoomAdmins(models.Model):
     roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'RoomAdmins'
         unique_together = (('username', 'roomname'),)
 
@@ -152,20 +80,10 @@ class Rooms(models.Model):
     timecreated = models.DateTimeField(db_column='timeCreated')  # Field name made lowercase.
 
     class Meta:
-        managed = False
         db_table = 'Rooms'
 
 
-class Skins(models.Model):
-    name = models.CharField(primary_key=True, max_length=30)
-    styleurl = models.TextField(db_column='styleURL', blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Skins'
-
-
-class Users(models.Model):
+class ChatUsers(models.Model):
     name = models.CharField(max_length=30, unique=True)
     password = models.CharField(max_length=32, blank=True, null=True)
     preferredname = models.CharField(db_column='preferredName', max_length=30, blank=True, null=True)  # Field name made lowercase.
@@ -210,31 +128,3 @@ class Users(models.Model):
     randomphrase = models.TextField(db_column='randomPhrase')  # Field name made lowercase.
     personalquote = models.TextField(db_column='personalQuote')  # Field name made lowercase.
 
-    class Meta:
-        db_table = 'Users'
-
-
-class LegacyPosts(models.Model):
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
-    data = models.TextField(blank=True, null=True)
-    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp', primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'legacyposts'
-        unique_together = (('tstamp', 'handlename', 'roomname', 'usertopm'),)
-
-
-class TrumpPost(models.Model):
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
-    data = models.TextField(blank=True, null=True)
-    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp', primary_key=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'trumpPost'
-        unique_together = (('tstamp', 'handlename', 'roomname', 'usertopm'),)
