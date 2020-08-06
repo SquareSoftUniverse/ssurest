@@ -40,7 +40,7 @@ class HandleOf(models.Model):
 
 
 class Handles(models.Model):
-    name = models.CharField(primary_key=True, max_length=50)
+    name = models.CharField(unique=True, max_length=50)
     handlecolor = models.CharField(db_column='handleColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
     textcolor = models.CharField(db_column='textColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
     size = models.DecimalField(max_digits=2, decimal_places=0, blank=True, null=True)
