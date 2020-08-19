@@ -24,9 +24,6 @@ class Emoticons(models.Model):
     roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
     imageurl = models.TextField(db_column='imageURL', blank=True, null=True)  # Field name made lowercase.
 
-    class Meta:
-        db_table = 'Emoticons'
-
 
 class HandleOf(models.Model):
     handlename = models.CharField(db_column='handleName', primary_key=True, max_length=50)  # Field name made lowercase.
@@ -47,9 +44,6 @@ class Handles(models.Model):
     link = models.TextField(blank=True, null=True)
     hidden = models.IntegerField()
 
-    class Meta:
-        db_table = 'Handles'
-
 
 class Posts(models.Model):
     roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
@@ -58,25 +52,16 @@ class Posts(models.Model):
     usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
     tstamp = models.DateTimeField(db_column='tStamp')  # Field name made lowercase.
 
-    class Meta:
-        db_table = 'Posts'
-
 
 class RoomAdmins(models.Model):
     username = models.CharField(db_column='userName', primary_key=True, max_length=50)  # Field name made lowercase.
     roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-
-    class Meta:
-        db_table = 'RoomAdmins'
 
 
 class Rooms(models.Model):
     name = models.CharField(max_length=30)
     motd = models.TextField(blank=True, null=True)
     timecreated = models.DateTimeField(db_column='timeCreated')  # Field name made lowercase.
-
-    class Meta:
-        db_table = 'Rooms'
 
 
 class ChatUsers(models.Model):
