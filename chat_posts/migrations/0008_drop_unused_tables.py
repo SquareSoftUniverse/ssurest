@@ -37,20 +37,4 @@ class Migration(migrations.Migration):
         migrations.DeleteModel(
             name='TrumpPost',
         ),
-        migrations.AlterUniqueTogether(
-            name='allowedin',
-            unique_together={('username', 'roomname')},
-        ),
-        migrations.AlterUniqueTogether(
-            name='emoticons',
-            unique_together={('matchedtext', 'roomname')},
-        ),
-        migrations.AlterUniqueTogether(
-            name='posts',
-            unique_together={('tstamp', 'handlename', 'roomname', 'usertopm')},
-        ),
-        migrations.AlterUniqueTogether(
-            name='roomadmins',
-            unique_together={('username', 'roomname')},
-        ),
     ]

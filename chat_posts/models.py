@@ -15,7 +15,6 @@ class AllowedIn(models.Model):
     class Meta:
         managed = False
         db_table = 'AllowedIn'
-        unique_together = (('username', 'roomname'),)
 
 
 class Emoticons(models.Model):
@@ -27,7 +26,6 @@ class Emoticons(models.Model):
 
     class Meta:
         db_table = 'Emoticons'
-        unique_together = (('matchedtext', 'roomname'),)
 
 
 class HandleOf(models.Model):
@@ -58,11 +56,10 @@ class Posts(models.Model):
     handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
     data = models.TextField(blank=True, null=True)
     usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp', primary_key=True)  # Field name made lowercase.
+    tstamp = models.DateTimeField(db_column='tStamp')  # Field name made lowercase.
 
     class Meta:
         db_table = 'Posts'
-        unique_together = (('tstamp', 'handlename', 'roomname', 'usertopm'),)
 
 
 class RoomAdmins(models.Model):
@@ -71,7 +68,6 @@ class RoomAdmins(models.Model):
 
     class Meta:
         db_table = 'RoomAdmins'
-        unique_together = (('username', 'roomname'),)
 
 
 class Rooms(models.Model):
