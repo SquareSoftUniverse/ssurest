@@ -45,14 +45,6 @@ class Handles(models.Model):
     hidden = models.IntegerField()
 
 
-class Posts(models.Model):
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
-    data = models.TextField(blank=True, null=True)
-    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp')  # Field name made lowercase.
-
-
 class RoomAdmins(models.Model):
     username = models.CharField(db_column='userName', primary_key=True, max_length=50)  # Field name made lowercase.
     roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
@@ -108,4 +100,14 @@ class ChatUsers(models.Model):
     futureaspirations = models.TextField(db_column='futureAspirations')  # Field name made lowercase.
     randomphrase = models.TextField(db_column='randomPhrase')  # Field name made lowercase.
     personalquote = models.TextField(db_column='personalQuote')  # Field name made lowercase.
+
+
+class Posts(models.Model):
+    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
+    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
+    data = models.TextField(blank=True, null=True)
+    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
+    tstamp = models.DateTimeField(db_column='tStamp')  # Field name made lowercase.
+
+    room = models.ForeignKey(Rooms, null=True, blank=True, on_delete=models.SET_NULL)
 
