@@ -18,10 +18,16 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.RunPython(add_chat_posts),
-        migrations.RunSQL(
-            "UPDATE chat_posts_posts "
-            "JOIN chat_posts_rooms "
-            "ON chat_posts_posts.roomName = chat_posts_rooms.name "
-            "SET chat_posts_posts.room_id = chat_posts_rooms.id;"
-        )
+        migrations.RunSQL([
+            (
+                "ALTER TABLE chat_posts_posts "
+                "CHANGE tStamp tStamp timestamp NOT NULL default CURRENT_TIMESTAMP;"
+            ),
+            (
+                "UPDATE chat_posts_posts "
+                "JOIN chat_posts_rooms "
+                "ON chat_posts_posts.roomName = chat_posts_rooms.name "
+                "SET chat_posts_posts.room_id = chat_posts_rooms.id;"
+            )
+        ])
     ]
