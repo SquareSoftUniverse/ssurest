@@ -6,7 +6,7 @@ class ChatUserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ChatUsers
-        fields = '__all__'
+        exclude = ('password', )
 
 
 class HandleSerializer(serializers.ModelSerializer):
