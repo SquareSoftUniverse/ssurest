@@ -8,15 +8,6 @@
 from django.db import models
 
 
-class AllowedIn(models.Model):
-    username = models.CharField(db_column='userName', primary_key=True, max_length=50)  # Field name made lowercase.
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'AllowedIn'
-
-
 class Emoticons(models.Model):
     matchedtext = models.CharField(db_column='matchedText', primary_key=True, max_length=100)  # Field name made lowercase.
     height = models.DecimalField(max_digits=4, decimal_places=0, blank=True, null=True)
@@ -25,65 +16,46 @@ class Emoticons(models.Model):
     imageurl = models.TextField(db_column='imageURL', blank=True, null=True)  # Field name made lowercase.
 
 
-class HandleOf(models.Model):
-    handlename = models.CharField(db_column='handleName', primary_key=True, max_length=50)  # Field name made lowercase.
-    username = models.CharField(db_column='userName', max_length=30, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'HandleOf'
-
-
 class ChatUsers(models.Model):
     name = models.CharField(max_length=30, unique=True)
     password = models.CharField(max_length=32, blank=True, null=True)
-    preferredname = models.CharField(db_column='preferredName', max_length=30, blank=True, null=True)  # Field name made lowercase.
-    realname = models.CharField(db_column='realName', max_length=40, blank=True, null=True)  # Field name made lowercase.
+    preferred_name = models.CharField(db_column='preferred_name', max_length=30, blank=True, null=True)  # Field name made lowercase.
+    real_name = models.CharField(db_column='real_name', max_length=40, blank=True, null=True)  # Field name made lowercase.
     birthday = models.DateField(blank=True, null=True)
-    emailaddress = models.CharField(db_column='emailAddress', max_length=100)  # Field name made lowercase.
-    timemodified = models.DateTimeField(db_column='timeModified')  # Field name made lowercase.
-    defaulthandle = models.CharField(db_column='defaultHandle', max_length=50, blank=True, null=True)  # Field name made lowercase.
-    defaultroom = models.CharField(db_column='defaultRoom', max_length=30, blank=True, null=True)  # Field name made lowercase.
-    avatarlayout = models.CharField(db_column='avatarLayout', max_length=10)  # Field name made lowercase.
-    avatartime = models.CharField(db_column='avatarTime', max_length=4)  # Field name made lowercase.
-    avatarpictures = models.IntegerField(db_column='avatarPictures')  # Field name made lowercase.
-    systemmessages = models.IntegerField(db_column='systemMessages')  # Field name made lowercase.
-    emoticons = models.IntegerField()
-    skin = models.CharField(max_length=30)
-    chatcontrol = models.CharField(max_length=30)
-    refresh = models.DecimalField(max_digits=10, decimal_places=0)
-    avatarlimit = models.DecimalField(max_digits=10, decimal_places=0)
-    chatlimit = models.DecimalField(max_digits=10, decimal_places=0)
-    framestyle = models.CharField(max_length=20)
-    javascript = models.IntegerField()
-    frameborder = models.IntegerField()
-    scrollbar = models.IntegerField()
-    timecreated = models.DateTimeField(db_column='timeCreated')  # Field name made lowercase.
-    autoloadrecent = models.IntegerField(db_column='autoloadRecent')  # Field name made lowercase.
-    timezoneoffset = models.DecimalField(db_column='timezoneOffset', max_digits=2, decimal_places=0)  # Field name made lowercase.
-    allowskinoverride = models.IntegerField(db_column='allowSkinOverride')  # Field name made lowercase.
-    scratchpadtext = models.TextField(db_column='scratchpadText')  # Field name made lowercase.
-    scratchpadtime = models.DateTimeField(db_column='scratchpadTime', blank=True, null=True)  # Field name made lowercase.
+    email_address = models.CharField(db_column='email_address', max_length=100)  # Field name made lowercase.
+    time_modified = models.DateTimeField(db_column='time_modified')  # Field name made lowercase.
+    default_handle = models.CharField(db_column='default_handle', max_length=50, blank=True, null=True)  # Field name made lowercase.
+    default_room = models.CharField(db_column='default_room', max_length=30, blank=True, null=True)  # Field name made lowercase.
+    avatar_layout = models.CharField(db_column='avatar_layout', max_length=10)  # Field name made lowercase.
+    avatar_time = models.CharField(db_column='avatar_time', max_length=4)  # Field name made lowercase.
+    avatar_pictures = models.IntegerField(db_column='avatar_pictures')  # Field name made lowercase.
+    system_messages = models.IntegerField(db_column='system_messages')  # Field name made lowercase.
+    time_created = models.DateTimeField(db_column='time_created')  # Field name made lowercase.
+    autoload_recent = models.IntegerField(db_column='autoload_recent')  # Field name made lowercase.
+    timezone_offset = models.DecimalField(db_column='timezone_offset', max_digits=2, decimal_places=0)  # Field name made lowercase.
+    allow_skin_override = models.IntegerField(db_column='allow_skin_override')  # Field name made lowercase.
+    scratchpad_text = models.TextField(db_column='scratchpad_text')  # Field name made lowercase.
+    scratchpad_time = models.DateTimeField(db_column='scratchpad_time', blank=True, null=True)  # Field name made lowercase.
     location = models.TextField()
     aim = models.TextField(db_column='AIM')  # Field name made lowercase.
     icq = models.TextField(db_column='ICQ')  # Field name made lowercase.
     msn = models.TextField(db_column='MSN')  # Field name made lowercase.
-    firstcame = models.TextField(db_column='firstCame')  # Field name made lowercase.
+    first_came = models.TextField(db_column='first_came')  # Field name made lowercase.
     interests = models.TextField()
     obsessions = models.TextField()
-    favoritevideogames = models.TextField(db_column='favoriteVideoGames')  # Field name made lowercase.
-    favoriteanime = models.TextField(db_column='favoriteAnime')  # Field name made lowercase.
-    favoritemusic = models.TextField(db_column='favoriteMusic')  # Field name made lowercase.
-    mosttimespent = models.TextField(db_column='mostTimeSpent')  # Field name made lowercase.
-    futureaspirations = models.TextField(db_column='futureAspirations')  # Field name made lowercase.
-    randomphrase = models.TextField(db_column='randomPhrase')  # Field name made lowercase.
-    personalquote = models.TextField(db_column='personalQuote')  # Field name made lowercase.
+    favorite_video_games = models.TextField(db_column='favorite_video_games')  # Field name made lowercase.
+    favorite_anime = models.TextField(db_column='favorite_anime')  # Field name made lowercase.
+    favorite_music = models.TextField(db_column='favorite_music')  # Field name made lowercase.
+    most_time_spent = models.TextField(db_column='most_time_spent')  # Field name made lowercase.
+    future_aspirations = models.TextField(db_column='future_aspirations')  # Field name made lowercase.
+    random_phrase = models.TextField(db_column='random_phrase')  # Field name made lowercase.
+    personal_quote = models.TextField(db_column='personal_quote')  # Field name made lowercase.
 
 
 class Handles(models.Model):
     name = models.CharField(unique=True, max_length=50)
-    handlecolor = models.CharField(db_column='handleColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
-    textcolor = models.CharField(db_column='textColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
+    handle_color = models.CharField(db_column='handle_color', max_length=6, blank=True, null=True)  # Field name made lowercase.
+    text_color = models.CharField(db_column='text_color', max_length=6, blank=True, null=True)  # Field name made lowercase.
     size = models.DecimalField(max_digits=2, decimal_places=0, blank=True, null=True)
     font = models.CharField(max_length=50, blank=True, null=True)
     picture = models.TextField(blank=True, null=True)
@@ -93,23 +65,16 @@ class Handles(models.Model):
     chat_user = models.ForeignKey(ChatUsers, null=True, blank=True, on_delete=models.SET_NULL)
 
 
-class RoomAdmins(models.Model):
-    username = models.CharField(db_column='userName', primary_key=True, max_length=50)  # Field name made lowercase.
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-
-
 class Rooms(models.Model):
     name = models.CharField(max_length=30)
     motd = models.TextField(blank=True, null=True)
-    timecreated = models.DateTimeField(db_column='timeCreated')  # Field name made lowercase.
+    time_created = models.DateTimeField(db_column='time_created')  # Field name made lowercase.
 
 
 class Posts(models.Model):
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-    handlename = models.CharField(db_column='handleName', max_length=50)  # Field name made lowercase.
-    data = models.TextField(blank=True, null=True)
-    usertopm = models.CharField(db_column='userToPM', max_length=30)  # Field name made lowercase.
-    tstamp = models.DateTimeField(db_column='tStamp')  # Field name made lowercase.
+    message = models.TextField(blank=True, null=True)
+    user_to_pm = models.CharField(db_column='user_to_PM', max_length=30)  # Field name made lowercase.
+    datetime_posted = models.DateTimeField(db_column='datetime_posted')  # Field name made lowercase.
 
     room = models.ForeignKey(Rooms, null=True, blank=True, on_delete=models.SET_NULL)
     handle = models.ForeignKey(Handles, null=True, blank=True, on_delete=models.SET_NULL)
