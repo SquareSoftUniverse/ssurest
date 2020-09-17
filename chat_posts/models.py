@@ -34,28 +34,6 @@ class HandleOf(models.Model):
         db_table = 'HandleOf'
 
 
-class Handles(models.Model):
-    name = models.CharField(unique=True, max_length=50)
-    handlecolor = models.CharField(db_column='handleColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
-    textcolor = models.CharField(db_column='textColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
-    size = models.DecimalField(max_digits=2, decimal_places=0, blank=True, null=True)
-    font = models.CharField(max_length=50, blank=True, null=True)
-    picture = models.TextField(blank=True, null=True)
-    link = models.TextField(blank=True, null=True)
-    hidden = models.IntegerField()
-
-
-class RoomAdmins(models.Model):
-    username = models.CharField(db_column='userName', primary_key=True, max_length=50)  # Field name made lowercase.
-    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
-
-
-class Rooms(models.Model):
-    name = models.CharField(max_length=30)
-    motd = models.TextField(blank=True, null=True)
-    timecreated = models.DateTimeField(db_column='timeCreated')  # Field name made lowercase.
-
-
 class ChatUsers(models.Model):
     name = models.CharField(max_length=30, unique=True)
     password = models.CharField(max_length=32, blank=True, null=True)
@@ -100,6 +78,30 @@ class ChatUsers(models.Model):
     futureaspirations = models.TextField(db_column='futureAspirations')  # Field name made lowercase.
     randomphrase = models.TextField(db_column='randomPhrase')  # Field name made lowercase.
     personalquote = models.TextField(db_column='personalQuote')  # Field name made lowercase.
+
+
+class Handles(models.Model):
+    name = models.CharField(unique=True, max_length=50)
+    handlecolor = models.CharField(db_column='handleColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
+    textcolor = models.CharField(db_column='textColor', max_length=6, blank=True, null=True)  # Field name made lowercase.
+    size = models.DecimalField(max_digits=2, decimal_places=0, blank=True, null=True)
+    font = models.CharField(max_length=50, blank=True, null=True)
+    picture = models.TextField(blank=True, null=True)
+    link = models.TextField(blank=True, null=True)
+    hidden = models.IntegerField()
+
+    chat_user = models.ForeignKey(ChatUsers, null=True, blank=True, on_delete=models.SET_NULL)
+
+
+class RoomAdmins(models.Model):
+    username = models.CharField(db_column='userName', primary_key=True, max_length=50)  # Field name made lowercase.
+    roomname = models.CharField(db_column='roomName', max_length=30)  # Field name made lowercase.
+
+
+class Rooms(models.Model):
+    name = models.CharField(max_length=30)
+    motd = models.TextField(blank=True, null=True)
+    timecreated = models.DateTimeField(db_column='timeCreated')  # Field name made lowercase.
 
 
 class Posts(models.Model):
