@@ -110,4 +110,5 @@ class Posts(models.Model):
     tstamp = models.DateTimeField(db_column='tStamp')  # Field name made lowercase.
 
     room = models.ForeignKey(Rooms, null=True, blank=True, on_delete=models.SET_NULL)
+    handle = models.ForeignKey(Handles, null=True, blank=True, on_delete=models.SET_NULL)
 
