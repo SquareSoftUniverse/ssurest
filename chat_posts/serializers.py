@@ -14,3 +14,15 @@ class HandleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Handles
         fields = "__all__"
+
+
+class RoomSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Rooms
+        fields = "__all__"
+
+
+class PostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Posts
+        fields = "__all__"
