@@ -2,24 +2,19 @@
 
 from django.db import migrations
 
+
 def add_old_posts(apps, schema_editor):
-    
-    LegacyPosts = apps.get_model('chat_posts', 'LegacyPosts')
-    Posts = apps.get_model('chat_posts', 'Posts')
 
-    Posts.objects.bulk_create(
-        LegacyPosts.objects.all(), batch_size=10000
-    )
+    LegacyPosts = apps.get_model("chat_posts", "LegacyPosts")
+    Posts = apps.get_model("chat_posts", "Posts")
 
+    Posts.objects.bulk_create(LegacyPosts.objects.all(), batch_size=10000)
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0005_auto_increment'),
+        ("chat_posts", "0005_auto_increment"),
     ]
 
-    operations = [
-        migrations.RunPython(add_old_posts)
-    ]
-
+    operations = [migrations.RunPython(add_old_posts)]

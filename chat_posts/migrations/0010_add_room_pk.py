@@ -6,31 +6,35 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0009_add_id_pk_at_once'),
+        ("chat_posts", "0009_add_id_pk_at_once"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='allowedin',
-            options={'managed': False},
+            name="allowedin",
+            options={"managed": False},
         ),
         migrations.AlterModelOptions(
-            name='handleof',
-            options={'managed': False},
+            name="handleof",
+            options={"managed": False},
         ),
         migrations.AlterField(
-            model_name='rooms',
-            name='name',
+            model_name="rooms",
+            name="name",
             field=models.CharField(max_length=30),
         ),
         migrations.AlterField(
-            model_name='Rooms',
-            name='id',
-            field=models.IntegerField(primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="Rooms",
+            name="id",
+            field=models.IntegerField(
+                primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='Rooms',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="Rooms",
+            name="id",
+            field=models.AutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
     ]

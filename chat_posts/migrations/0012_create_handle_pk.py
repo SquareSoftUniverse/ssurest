@@ -6,23 +6,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0011_add_int_to_handles'),
+        ("chat_posts", "0011_add_int_to_handles"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='handles',
-            name='name',
+            model_name="handles",
+            name="name",
             field=models.CharField(max_length=50, unique=True),
         ),
         migrations.AlterField(
-            model_name='handles',
-            name='id',
-            field=models.IntegerField(primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="handles",
+            name="id",
+            field=models.IntegerField(
+                primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
         migrations.AlterField(
-            model_name='handles',
-            name='id',
-            field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="handles",
+            name="id",
+            field=models.AutoField(
+                auto_created=True, primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
     ]

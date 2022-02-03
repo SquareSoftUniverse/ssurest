@@ -5,29 +5,31 @@ from django.db import migrations
 
 def add_chat_posts(apps, schema_editor):
 
-    Rooms = apps.get_model('chat_posts', 'Rooms')
+    Rooms = apps.get_model("chat_posts", "Rooms")
 
-    Rooms.objects.get_or_create(name='Old SSU')
+    Rooms.objects.get_or_create(name="Old SSU")
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0015_posts_room'),
+        ("chat_posts", "0015_posts_room"),
     ]
 
     operations = [
         migrations.RunPython(add_chat_posts),
-        migrations.RunSQL([
-            (
-                "ALTER TABLE chat_posts_posts "
-                "CHANGE tStamp tStamp timestamp NOT NULL default CURRENT_TIMESTAMP;"
-            ),
-            (
-                "UPDATE chat_posts_posts "
-                "JOIN chat_posts_rooms "
-                "ON chat_posts_posts.roomName = chat_posts_rooms.name "
-                "SET chat_posts_posts.room_id = chat_posts_rooms.id;"
-            )
-        ])
+        migrations.RunSQL(
+            [
+                (
+                    "ALTER TABLE chat_posts_posts "
+                    "CHANGE tStamp tStamp timestamp NOT NULL default CURRENT_TIMESTAMP;"
+                ),
+                (
+                    "UPDATE chat_posts_posts "
+                    "JOIN chat_posts_rooms "
+                    "ON chat_posts_posts.roomName = chat_posts_rooms.name "
+                    "SET chat_posts_posts.room_id = chat_posts_rooms.id;"
+                ),
+            ]
+        ),
     ]

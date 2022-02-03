@@ -6,18 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0019_add_user_fk_to_handle'),
+        ("chat_posts", "0019_add_user_fk_to_handle"),
     ]
 
     operations = [
-        migrations.RunSQL([
-            (
-                "UPDATE chat_posts_handles "
-                "JOIN HandleOf "
-                "ON chat_posts_handles.name = HandleOf.handleName "
-                "JOIN chat_posts_chatusers "
-                "ON HandleOf.userName = chat_posts_chatusers.name "
-                "SET chat_posts_handles.chat_user_id = chat_posts_chatusers.id;"
-            )
-        ])
+        migrations.RunSQL(
+            [
+                (
+                    "UPDATE chat_posts_handles "
+                    "JOIN HandleOf "
+                    "ON chat_posts_handles.name = HandleOf.handleName "
+                    "JOIN chat_posts_chatusers "
+                    "ON HandleOf.userName = chat_posts_chatusers.name "
+                    "SET chat_posts_handles.chat_user_id = chat_posts_chatusers.id;"
+                )
+            ]
+        )
     ]

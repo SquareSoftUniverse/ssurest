@@ -6,24 +6,26 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0003_fill_id'),
+        ("chat_posts", "0003_fill_id"),
     ]
 
     operations = [
         migrations.RunSQL(
-            sql=[('ALTER TABLE Users DROP PRIMARY KEY;')],
-            reverse_sql=[('ALTER TABLE Users ADD PRIMARY KEY (name);')],
+            sql=[("ALTER TABLE Users DROP PRIMARY KEY;")],
+            reverse_sql=[("ALTER TABLE Users ADD PRIMARY KEY (name);")],
             state_operations=[
                 migrations.AlterField(
-                    model_name='users',
-                    name='name',
+                    model_name="users",
+                    name="name",
                     field=models.CharField(max_length=30, unique=True),
                 )
-            ]
+            ],
         ),
         migrations.AlterField(
-            model_name='users',
-            name='id',
-            field=models.IntegerField(primary_key=True, serialize=False, verbose_name='ID'),
+            model_name="users",
+            name="id",
+            field=models.IntegerField(
+                primary_key=True, serialize=False, verbose_name="ID"
+            ),
         ),
     ]

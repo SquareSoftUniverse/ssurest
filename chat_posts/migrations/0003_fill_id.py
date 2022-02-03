@@ -4,20 +4,19 @@ from django.db import migrations
 
 from .util import fill_id_primary_key
 
+
 def fill_user_ids(apps, schema_editor):
     """
     Fill user with surrogate primary key 'id'
     """
-    Users = apps.get_model('chat_posts', 'Users')
+    Users = apps.get_model("chat_posts", "Users")
     fill_id_primary_key(Users)
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0002_add_dummy_id'),
+        ("chat_posts", "0002_add_dummy_id"),
     ]
 
-    operations = [
-        migrations.RunPython(fill_user_ids)
-    ]
+    operations = [migrations.RunPython(fill_user_ids)]

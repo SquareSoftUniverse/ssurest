@@ -7,13 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0014_use_django_names'),
+        ("chat_posts", "0014_use_django_names"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='posts',
-            name='room',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='chat_posts.Rooms'),
+            model_name="posts",
+            name="room",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to="chat_posts.Rooms",
+            ),
         ),
     ]

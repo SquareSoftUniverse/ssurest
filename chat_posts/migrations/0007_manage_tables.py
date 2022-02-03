@@ -6,80 +6,80 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0006_add_old_posts'),
+        ("chat_posts", "0006_add_old_posts"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='Users',
-            new_name='ChatUsers',
+            old_name="Users",
+            new_name="ChatUsers",
         ),
         migrations.AlterModelOptions(
-            name='LegacyPosts',
+            name="LegacyPosts",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='allowedin',
+            name="allowedin",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='censors',
+            name="censors",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='chatcontrols',
+            name="chatcontrols",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='currentposts',
+            name="currentposts",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='dailyposts',
+            name="dailyposts",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='emoticons',
+            name="emoticons",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='handleof',
+            name="handleof",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='handles',
+            name="handles",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='oldssuposts',
+            name="oldssuposts",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='posts',
+            name="posts",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='profiles',
+            name="profiles",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='roomadmins',
+            name="roomadmins",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='rooms',
+            name="rooms",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='skins',
+            name="skins",
             options={},
         ),
         migrations.AlterModelOptions(
-            name='trumppost',
+            name="trumppost",
             options={},
         ),
         migrations.AlterModelTable(
-            name='chatusers',
+            name="chatusers",
             table=None,
         ),
     ]

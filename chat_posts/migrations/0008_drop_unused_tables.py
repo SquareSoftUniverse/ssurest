@@ -6,35 +6,35 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0007_manage_tables'),
+        ("chat_posts", "0007_manage_tables"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='Censors',
+            name="Censors",
         ),
         migrations.DeleteModel(
-            name='LegacyPosts',
+            name="LegacyPosts",
         ),
         migrations.DeleteModel(
-            name='ChatControls',
+            name="ChatControls",
         ),
         migrations.DeleteModel(
-            name='CurrentPosts',
+            name="CurrentPosts",
         ),
         migrations.DeleteModel(
-            name='DailyPosts',
+            name="DailyPosts",
         ),
         migrations.DeleteModel(
-            name='OldSSUPosts',
+            name="OldSSUPosts",
         ),
         migrations.DeleteModel(
-            name='Profiles',
+            name="Profiles",
         ),
         migrations.DeleteModel(
-            name='Skins',
+            name="Skins",
         ),
         migrations.DeleteModel(
-            name='TrumpPost',
+            name="TrumpPost",
         ),
     ]

@@ -6,28 +6,28 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0013_add_int_to_posts'),
+        ("chat_posts", "0013_add_int_to_posts"),
     ]
 
     operations = [
         migrations.AlterModelTable(
-            name='emoticons',
+            name="emoticons",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='handles',
+            name="handles",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='posts',
+            name="posts",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='roomadmins',
+            name="roomadmins",
             table=None,
         ),
         migrations.AlterModelTable(
-            name='rooms',
+            name="rooms",
             table=None,
         ),
     ]

@@ -12,4 +12,3 @@ class ChatUserViewSet(viewsets.ReadOnlyModelViewSet):
 class HandleViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Handles.objects.all()
     serializer_class = HandleSerializer
-

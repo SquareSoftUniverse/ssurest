@@ -6,16 +6,16 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0020_add_user_data_to_handle'),
+        ("chat_posts", "0020_add_user_data_to_handle"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='allowedin',
-            options={'managed': True},
+            name="allowedin",
+            options={"managed": True},
         ),
         migrations.AlterModelOptions(
-            name='handleof',
-            options={'managed': True},
+            name="handleof",
+            options={"managed": True},
         ),
     ]

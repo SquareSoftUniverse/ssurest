@@ -6,43 +6,51 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0012_create_handle_pk'),
+        ("chat_posts", "0012_create_handle_pk"),
     ]
 
     operations = [
-
         migrations.RunSQL(
-            sql=[('ALTER TABLE Posts DROP PRIMARY KEY;')],
-            reverse_sql=[('ALTER TABLE Posts ADD PRIMARY KEY (tstamp, handlename, roomname, usertopm);')],
+            sql=[("ALTER TABLE Posts DROP PRIMARY KEY;")],
+            reverse_sql=[
+                (
+                    "ALTER TABLE Posts ADD PRIMARY KEY (tstamp, handlename, roomname, usertopm);"
+                )
+            ],
             state_operations=[
                 migrations.AlterUniqueTogether(
-                    name='posts',
+                    name="posts",
                     unique_together=set(),
                 ),
                 migrations.AlterField(
-                    model_name='posts',
-                    name='tstamp',
-                    field=models.DateTimeField(db_column='tStamp'),
+                    model_name="posts",
+                    name="tstamp",
+                    field=models.DateTimeField(db_column="tStamp"),
                 ),
-            ]
+            ],
         ),
         migrations.RunSQL(
-            sql=[('ALTER TABLE Posts ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;')],
+            sql=[("ALTER TABLE Posts ADD id INT NOT NULL AUTO_INCREMENT PRIMARY KEY;")],
             reverse_sql=[
-                ('ALTER TABLE Posts DROP PRIMARY KEY;'),
-                ('ALTER TABLE Posts DROP COLUMN id;'),
+                ("ALTER TABLE Posts DROP PRIMARY KEY;"),
+                ("ALTER TABLE Posts DROP COLUMN id;"),
             ],
             state_operations=[
                 migrations.AddField(
-                model_name='Posts',
-                name='id',
-                field=models.IntegerField(default=0),
+                    model_name="Posts",
+                    name="id",
+                    field=models.IntegerField(default=0),
                 ),
                 migrations.AlterField(
-                    model_name='posts',
-                    name='id',
-                    field=models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID'),
-                )
-            ]
-        )
+                    model_name="posts",
+                    name="id",
+                    field=models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+            ],
+        ),
     ]

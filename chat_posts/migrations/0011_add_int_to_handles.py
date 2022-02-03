@@ -4,36 +4,37 @@ from django.db import migrations, models
 
 from .util import fill_id_primary_key
 
+
 def fill_user_ids(apps, schema_editor):
     """
     Fill user with surrogate primary key 'id'
     """
-    Handles = apps.get_model('chat_posts', 'Handles')
+    Handles = apps.get_model("chat_posts", "Handles")
     fill_id_primary_key(Handles)
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chat_posts', '0010_add_room_pk'),
+        ("chat_posts", "0010_add_room_pk"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='Handles',
-            name='id',
+            model_name="Handles",
+            name="id",
             field=models.IntegerField(default=0),
         ),
         migrations.RunPython(fill_user_ids),
         migrations.RunSQL(
-            sql=[('ALTER TABLE Handles DROP PRIMARY KEY;')],
-            reverse_sql=[('ALTER TABLE Handles ADD PRIMARY KEY (name);')],
+            sql=[("ALTER TABLE Handles DROP PRIMARY KEY;")],
+            reverse_sql=[("ALTER TABLE Handles ADD PRIMARY KEY (name);")],
             state_operations=[
                 migrations.AlterField(
-                    model_name='Handles',
-                    name='name',
+                    model_name="Handles",
+                    name="name",
                     field=models.CharField(max_length=30, unique=True),
                 )
-            ]
+            ],
         ),
     ]
