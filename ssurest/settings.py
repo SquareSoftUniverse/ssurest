@@ -83,6 +83,7 @@ DATABASES = {
             'isolation_level': 'read committed',
             'sql_mode': 'STRICT_TRANS_TABLES',
         },
+        'NAME': 'ssu',
     }
 }
 
