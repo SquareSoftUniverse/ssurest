@@ -84,6 +84,7 @@ DATABASES = {
             'sql_mode': 'STRICT_TRANS_TABLES',
         },
         'NAME': 'ssu',
+        'USER': 'ssu',
     }
 }
 
