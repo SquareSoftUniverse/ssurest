@@ -9,8 +9,6 @@ class ChatUserSerializer(serializers.ModelSerializer):
 
 
 class HandleSerializer(serializers.ModelSerializer):
-    chat_user = ChatUserSerializer()
-
     class Meta:
         model = Handles
         fields = "__all__"
@@ -23,6 +21,9 @@ class RoomSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
+    handle = HandleSerializer()
+    room = RoomSerializer()
+
     class Meta:
         model = Posts
         fields = "__all__"

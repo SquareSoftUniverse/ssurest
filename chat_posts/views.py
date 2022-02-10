@@ -27,3 +27,8 @@ class RoomViewSet(viewsets.ReadOnlyModelViewSet):
 class PostViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Posts.objects.all()
     serializer_class = PostSerializer
+
+
+class SSUPostViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Posts.objects.filter(room__id=2)
+    serializer_class = PostSerializer

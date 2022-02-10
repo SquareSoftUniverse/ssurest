@@ -144,3 +144,6 @@ class Posts(models.Model):
     handle = models.ForeignKey(
         Handles, null=True, blank=True, on_delete=models.SET_NULL
     )
+
+    class Meta:
+        ordering = ["datetime_posted"]
