@@ -19,3 +19,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.home {
+  padding: 1%;
+}
+</style>

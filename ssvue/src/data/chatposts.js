@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   count: 570626,
   next: "http://127.0.0.1:8000/ssuposts/?page=2",
