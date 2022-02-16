@@ -1,7 +1,7 @@
 <template>
   <div class="chat-window">
     <div
-      v-for="(post, index) in results"
+      v-for="(post, index) in posts"
       :key="index"
     >
       <span
@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import chatPosts from "@/data/chatposts";
 import ChatPost from "@/chat/ChatPost.vue";
 import ChatHandle from "@/chat/ChatHandle.vue";
+import axios from "axios";
 
 export default {
   name: "ChatWindow",
@@ -35,12 +35,25 @@ export default {
     ChatHandle,
   },
   data() {
-    const sortedResults = chatPosts.results.sort((a, b) =>
-      a.datetime_posted > b.datetime_posted ? 1 : -1
-    );
-    chatPosts.results = sortedResults;
-    return chatPosts;
+    return {
+      count: undefined,
+      nextUrl: "",
+      previousUrl: "",
+      posts: [],
+    }
   },
+  async created() {
+    await this.loadPosts();
+  },
+  methods: {
+    async loadPosts() {
+      const response = await axios.get("/api/posts");
+      this.count = response.data.count;
+      this.nextUrl = response.data.next;
+      this.previousUrl = response.data.previous;
+      this.posts = response.data.results;
+    },
+  }
 };
 </script>
 

@@ -5,7 +5,6 @@ from chat_posts.views import (
     HandleViewSet,
     PostViewSet,
     RoomViewSet,
-    SSUPostViewSet,
 )
 
 router = DefaultRouter()
@@ -13,7 +12,6 @@ router.register(r"chat_users", ChatUserViewSet)
 router.register(r"handles", HandleViewSet)
 router.register(r"rooms", RoomViewSet)
 router.register(r"posts", PostViewSet)
-router.register(r"ssuposts", SSUPostViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),

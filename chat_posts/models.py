@@ -146,4 +146,4 @@ class Posts(models.Model):
     )
 
     class Meta:
-        ordering = ["datetime_posted"]
+        ordering = ["-datetime_posted"]
