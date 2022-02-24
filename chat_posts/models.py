@@ -6,6 +6,9 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Emoticons(models.Model):
@@ -22,9 +25,10 @@ class Emoticons(models.Model):
     )  # Field name made lowercase.
 
 
-class ChatUsers(models.Model):
-    name = models.CharField(max_length=30, unique=True)
-    password = models.CharField(max_length=32, blank=True, null=True)
+class ChatProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    legacy_name = models.CharField(max_length=30, unique=True)
+    
     preferred_name = models.CharField(
         db_column="preferred_name", max_length=30, blank=True, null=True
     )  # Field name made lowercase.
@@ -32,7 +36,7 @@ class ChatUsers(models.Model):
         db_column="real_name", max_length=40, blank=True, null=True
     )  # Field name made lowercase.
     birthday = models.DateField(blank=True, null=True)
-    email_address = models.CharField(
+    legacy_email_address = models.CharField(
         db_column="email_address", max_length=100
     )  # Field name made lowercase.
     time_modified = models.DateTimeField(
@@ -104,6 +108,17 @@ class ChatUsers(models.Model):
     )  # Field name made lowercase.
 
 
+# @receiver(post_save, sender=User)
+# def create_user_profile(sender, instance, created, **kwargs):
+#     if created:
+#         ChatProfile.objects.create(user=instance)
+
+
+# @receiver(post_save, sender=User)
+# def save_user_profile(sender, instance, **kwargs):
+#     instance.profile.save()
+
+
 class Handles(models.Model):
     name = models.CharField(unique=True, max_length=50)
     handle_color = models.CharField(
@@ -118,8 +133,8 @@ class Handles(models.Model):
     link = models.TextField(blank=True, null=True)
     hidden = models.IntegerField()
 
-    chat_user = models.ForeignKey(
-        ChatUsers, null=True, blank=True, on_delete=models.SET_NULL
+    chat_profile = models.ForeignKey(
+        ChatProfile, null=True, blank=True, on_delete=models.SET_NULL
     )
 
 

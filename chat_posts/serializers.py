@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from chat_posts.models import Rooms, Posts, Handles, ChatUsers
+from chat_posts.models import Rooms, Posts, Handles, ChatProfile
 
 
-class ChatUserSerializer(serializers.ModelSerializer):
+class ChatProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ChatUsers
+        model = ChatProfile
         exclude = ("password",)
 
 

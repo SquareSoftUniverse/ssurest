@@ -1,9 +1,9 @@
 from rest_framework import viewsets
 
-from chat_posts.models import ChatUsers, Handles, Posts, Rooms
+from chat_posts.models import ChatProfile, Handles, Posts, Rooms
 from chat_posts.pagination import OrderedInReversePagination
 from chat_posts.serializers import (
-    ChatUserSerializer,
+    ChatProfileSerializer,
     HandleSerializer,
     PostSerializer,
     RoomSerializer,
@@ -11,8 +11,8 @@ from chat_posts.serializers import (
 
 
 class ChatUserViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = ChatUsers.objects.all()
-    serializer_class = ChatUserSerializer
+    queryset = ChatProfile.objects.all()
+    serializer_class = ChatProfileSerializer
 
 
 class HandleViewSet(viewsets.ReadOnlyModelViewSet):
